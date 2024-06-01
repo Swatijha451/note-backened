@@ -15,6 +15,7 @@ const app=express();
 
 const jwt=require("jsonwebtoken");
 const {authenticateToken }= require("./utilities");
+const port=process.env.port || 8080
 
 app.use(express.json());
 
@@ -321,7 +322,7 @@ app.put("/edit-note/:noteId",authenticateToken, async(req,res)=>{
     }
  })
 
-app.listen(8080,()=>{
+app.listen(port,()=>{
     console.log("app is started");
 });
 
