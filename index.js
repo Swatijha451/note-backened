@@ -1,5 +1,5 @@
 
-require("dotenv").config();
+require("dotenv").config({path:"./env"});
 
 const config=require("./config.json");
 const mongoose=require("mongoose");
