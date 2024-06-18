@@ -15,7 +15,7 @@ const app=express();
 
 const jwt=require("jsonwebtoken");
 const {authenticateToken }= require("./utilities.js");
-const PORT= 8080;
+const PORT= process.env.PORT||8080;
 
 app.use(express.json());
 
