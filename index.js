@@ -32,9 +32,9 @@ app.use(
 //create Account
 
 app.post("/create-account",async(req,res)=>{
-    const {fullName, email, password}=req.body;
+    const {name, email, password}=req.body;
 
-    if(!fullName){
+    if(!name){
         return res.status(400).json({error:true,message:"Full Name is required"});
     }
 
@@ -56,7 +56,7 @@ app.post("/create-account",async(req,res)=>{
     }
 
     const user=new User({
-        fullName,
+       fullName: name,
         email,
         password,
     });
@@ -123,7 +123,7 @@ app.get("/get-user", authenticateToken,async(req,res)=>{
 
     return res.json({
         user:{
-            fullName:isUser.fullName, 
+            name:isUser.fullName, 
             email:isUser.email,
             _id:isUser._id,
             createdOn:isUser.createdOn,
@@ -272,7 +272,7 @@ app.put("/edit-note/:noteId",authenticateToken, async(req,res)=>{
             });
         }
 
-         note.isPinned=isPinned;
+          note.isPinned=isPinned;
 
         await note.save();
 
